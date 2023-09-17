@@ -43,6 +43,7 @@
     "dependencies": {
         "@solana/wallet-adapter-react": "^0.15.35",
         "@solana/web3.js": "^1.78.5",
+        "@streampayments/medusa-payment-streampay": "^0.1.0",
         "axios": "^1.5.0",
         "web3": "^4.1.1"
     }
