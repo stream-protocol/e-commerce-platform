@@ -1,0 +1,19 @@
+// ormconfig.json
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "your_username",
+  "password": "your_password",
+  "database": "your_database",
+  "synchronize": true, // Auto-create database tables (only for development)
+  "logging": true, // Enable SQL query logging (only for development)
+  "entities": ["dist/models/**/*.js"], // Path to your entity classes
+  "migrations": ["dist/migrations/**/*.js"], // Path to your migration scripts
+  "subscribers": ["dist/subscribers/**/*.js"], // Path to your subscriber classes
+  "cli": {
+    "entitiesDir": "src/models",
+    "migrationsDir": "src/migrations",
+    "subscribersDir": "src/subscribers"
+  }
+}
