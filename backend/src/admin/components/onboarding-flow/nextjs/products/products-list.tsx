@@ -1,17 +1,21 @@
 import React from "react";
-import { useAdminCreateProduct, useAdminCreateCollection } from "medusa-react";
-import { useAdminRegions } from "medusa-react";
+import { 
+  useAdminCreateProduct,
+  useAdminCreateCollection,
+  useMedusa
+} from "medusa-react";
 import { StepContentProps } from "../../../../widgets/onboarding-flow/onboarding-flow";
 import { Button, Text } from "@medusajs/ui";
 import { AdminPostProductsReq, Product } from "@medusajs/medusa";
 import getSampleProducts from "../../../../utils/sample-products";
+import prepareRegions from "../../../../utils/prepare-region";
 
 const ProductsListNextjs = ({ onNext, isComplete }: StepContentProps) => {
   const { mutateAsync: createCollection, isLoading: collectionLoading } =
     useAdminCreateCollection();
   const { mutateAsync: createProduct, isLoading: productLoading } =
     useAdminCreateProduct();
-  const { regions } = useAdminRegions();
+  const { client } = useMedusa()
 
   const isLoading = collectionLoading || productLoading;
 
@@ -21,6 +25,8 @@ const ProductsListNextjs = ({ onNext, isComplete }: StepContentProps) => {
         title: "Merch",
         handle: "merch",
       });
+
+      const regions = await prepareRegions(client)
 
       const tryCreateProduct = async (sampleProduct: AdminPostProductsReq): Promise<Product | null> => {
         try {
@@ -53,13 +59,11 @@ const ProductsListNextjs = ({ onNext, isComplete }: StepContentProps) => {
   return (
     <div>
       <Text className="mb-2">
-        Create a product and set its general details such as title and description, its price, 
-        options, variants, images, and more. You'll then use the product to create a sample order.
+        Products is Medusa represent the products you sell. You can set their general details including a
+        title and description. Each product has options and variants, and you can set a price for each variant.
       </Text>
       <Text>
-      You can create a product by clicking the “New Product” button at the top right of the overview below this setup. 
-      If you’re not ready to create a product, we can create some sample products that will
-      help you explore Medusa and the Next.js storefront better.
+        Click the button below to create sample products.
       </Text>
       {!isComplete && (
         <div className="flex gap-2 mt-6">

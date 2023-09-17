@@ -1,11 +1,49 @@
-# StreamPayments services
+# Custom services
 
-The Stream**Pay™** E-Commerce Plugins are designed to seamlessly integrate with various e-commerce platforms, providing a versatile and streamlined payment solution for your online store. Here are the platforms that are supported by our plugins:
+You may define custom services that will be registered on the global container by creating files in the `/services` directory that export an instance of `BaseService`.
 
-## 1. Medusajs Integration
+```ts
+// src/services/my-custom.ts
 
-The Medusajs StreamPay Plugin is tailor-made for Medusa-based online stores. With this integration, merchants using Medusajs can effortlessly incorporate the Stream**Pay™** payment provider into their e-commerce platform. This enables them to accept blockchain-based payments, offering a secure, convenient, and transparent payment experience for their customers.
+import { Lifetime } from "awilix"
+import { TransactionBaseService } from "@medusajs/medusa";
+import { IEventBusService } from "@medusajs/types";
 
-## Future-Ready Innovations
+export default class MyCustomService extends TransactionBaseService {
+  static LIFE_TIME = Lifetime.SCOPED
+  protected readonly eventBusService_: IEventBusService
 
-While our plugins currently support Medusajs, Shopify, and WooCommerce, we are continuously innovating to expand our offerings. Stay tuned for future updates and integrations with additional e-commerce platforms, ensuring that Stream**Pay™** remains adaptable and accessible to a wider range of online stores.
+  constructor(
+      { eventBusService }: { eventBusService: IEventBusService },
+      options: Record<string, unknown>
+  ) {
+    // @ts-ignore
+    super(...arguments)
+
+    this.eventBusService_ = eventBusService
+  }
+}
+
+```
+
+The first argument to the `constructor` is the global giving you access to easy dependency injection. The container holds all registered services from the core, installed plugins and from other files in the `/services` directory. The registration name is a camelCased version of the file name with the type appended i.e.: `my-custom.js` is registered as `myCustomService`, `custom-thing.js` is registered as `customThingService`.
+
+You may use the services you define here in custom endpoints by resolving the services defined.
+
+```js
+import { Router } from "express"
+
+export default () => {
+  const router = Router()
+
+  router.get("/hello-product", async (req, res) => {
+    const myService = req.scope.resolve("myCustomService")
+
+    res.json({
+      message: await myService.getProductMessage()
+    })
+  })
+
+  return router;
+}
+```

@@ -1,5 +1,6 @@
 import { NextResponse, NextRequest } from "next/server"
 import getPrices from "@lib/util/get-product-prices"
+import filterProductsByStatus from "@lib/util/filter-products-by-status"
 
 import { initialize as initializeProductModule } from "@medusajs/product"
 import {
@@ -10,7 +11,7 @@ import { notFound } from "next/navigation"
 
 /**
  * This endpoint uses the serverless Product Module to retrieve a list of products.
- * The module connects directly to you Medusa database to retrieve and manipulate data, without the need for a dedicated server.
+ * The module connects directly to your Medusa database to retrieve and manipulate data, without the need for a dedicated server.
  * Read more about the Product Module here: https://docs.medusajs.com/modules/products/serverless-module
  */
 export async function GET(request: NextRequest) {
@@ -59,7 +60,7 @@ async function getProductsByCollectionId(queryParams: Record<string, any>) {
 
   const products = data.map((c) => c.products).flat() as ProductDTO[]
 
-  const publishedProducts = filterPublishedProducts(products)
+  const publishedProducts = filterProductsByStatus(products, "published")
 
   const count = publishedProducts.length
 
@@ -97,7 +98,7 @@ async function getProducts(params: Record<string, any>) {
     withDeleted: false,
   })
 
-  const publishedProducts = filterPublishedProducts(data)
+  const publishedProducts = filterProductsByStatus(data, "published")
 
   const productsWithPrices = await getPrices(publishedProducts, cart_id)
 
@@ -108,8 +109,4 @@ async function getProducts(params: Record<string, any>) {
     count,
     nextPage: count > nextPage ? nextPage : null,
   }
-}
-
-function filterPublishedProducts(products: ProductDTO[]) {
-  return products.filter((product) => product.status === "published")
 }
