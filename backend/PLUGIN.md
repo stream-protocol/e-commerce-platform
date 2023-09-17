@@ -1,6 +1,6 @@
 # StreamPay Medusa Plugin
 
-The StreamPay Medusa Plugin allows you to seamlessly integrate StreamPay's web3 payment processing capabilities into your Medusa-based e-commerce platform.
+The Stream**Pay** Medusa Plugin allows you to seamlessly integrate StreamPay's web3 payment processing capabilities into your Medusa-based e-commerce platform.
 
 ## Table of Contents
 
@@ -28,7 +28,7 @@ The StreamPay Medusa Plugin allows you to seamlessly integrate StreamPay's web3 
 ## Requirements
 
 - Medusajs backend
-- StreamPayments Merchant Portal
+- **Stream**Payments Merchant Portal
 
 **Notice!** **Stream**Payments Merchant Portal is not yet developed. The Merchant Portal is based on Medusa Admin UI and requires developers. It is inspired by the Medusa Admin UI Solana Payment App (Shopify) available at [Solana Payments App](https://github.com/solana-labs/solana-payments-app).
 
