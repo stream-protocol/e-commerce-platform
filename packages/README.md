@@ -1,4 +1,4 @@
-The Stream**Pay** Plugins (projects) for Medusa Commerce. 
+# The Stream**Pay** Plugins (projects) for Medusa Commerce. 
 
 **Below is an explanation of each package**:
 
