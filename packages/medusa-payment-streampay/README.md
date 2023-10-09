@@ -1,6 +1,6 @@
 # StreamPay Medusa Plugin
 
-The Stream**Pay** Medusa Plugin allows you to seamlessly integrate StreamPay's web3 payment processing capabilities into your Medusa-based e-commerce platform.
+The Stream**Pay** Medusa Plugin allows you to seamlessly integrate StreamPay™s web3 payment processing capabilities into your Medusa-based e-commerce platform.
 
 ## Table of Contents
 
