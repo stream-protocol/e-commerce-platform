@@ -15,7 +15,7 @@
         "prepare": "cross-env NODE_ENV=production npm run build"
     },
     "peerDependencies": {
-        "@medusajs/medusa": "^1.17.0",
+        "@medusajs/medusa": "^1.17.5",
         "medusa-interfaces": "^1.3.7",
         "typeorm": "^0.3.17",
         "axios": "^1.5.0"
