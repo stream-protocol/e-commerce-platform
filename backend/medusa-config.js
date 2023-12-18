@@ -71,6 +71,13 @@ const plugins = [
       customer_password_reset_template: process.env.SENDGRID_CUSTOMER_FORGOT_PASSWORD,
     },
   },
+  {
+    resolve: `medusa-plugin-contentful`,
+    options: {
+      space_id: process.env.CONTENTFUL_SPACE_ID,
+      access_token: process.env.CONTENTFUL_ACCESS_TOKEN,
+    },
+  },
 ];
     
 const modules = {
