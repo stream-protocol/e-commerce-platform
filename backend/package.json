@@ -1,11 +1,11 @@
 {
-  "name": "medusa-starter-default",
+  "name": "e-commerce-platform",
   "version": "0.0.1",
-  "description": "A starter for Medusa projects.",
-  "author": "Sebastian Rindom <skrindom@gmail.com>",
+  "description": "A decentralized e-commerce platform based of Medusa",
+  "author": "Stream Protocol",
   "license": "MIT",
   "keywords": [
-    "sqlite",
+    "streampay",
     "postgres",
     "typescript",
     "ecommerce",
@@ -25,25 +25,24 @@
     "dev": "cross-env npm run build:server && medusa develop"
   },
   "dependencies": {
-    "@medusajs/admin": "7.1.5",
-    "@medusajs/cache-inmemory": "^1.8.8",
-    "@medusajs/cache-redis": "^1.8.8",
-    "@medusajs/event-bus-local": "^1.9.6",
-    "@medusajs/event-bus-redis": "^1.8.9",
+    "@medusajs/admin": "7.1.9",
+    "@medusajs/cache-inmemory": "^1.8.9",
+    "@medusajs/cache-redis": "^1.8.9",
+    "@medusajs/event-bus-local": "^1.9.7",
+    "@medusajs/event-bus-redis": "^1.8.10",
     "@medusajs/file-local": "^1.0.2",
-    "@medusajs/medusa": "1.17.2",
+    "@medusajs/medusa": "1.19.0",
     "@tanstack/react-query": "4.22.0",
-    "babel-preset-medusa-package": "^1.1.19",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "dotenv": "16.0.3",
+    "dotenv": "16.3.1",
     "express": "^4.17.2",
     "medusa-fulfillment-manual": "^1.1.38",
     "medusa-interfaces": "^1.3.7",
     "medusa-payment-manual": "^1.0.24",
     "medusa-payment-stripe": "^6.0.5",
-    "prism-react-renderer": "^2.0.6",
-    "typeorm": "^0.3.17"
+    "prism-react-renderer": "^2.0.4",
+    "typeorm": "^0.3.16"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.3",
@@ -60,7 +59,7 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.7",
     "ts-loader": "^9.2.6",
-    "typescript": "^5.2.2"
+    "typescript": "^4.5.2"
   },
   "jest": {
     "globals": {
@@ -87,6 +86,5 @@
     ],
     "coverageDirectory": "./coverage",
     "testEnvironment": "node"
-  },
-  "packageManager": "yarn@3.6.4"
+  }
 }
