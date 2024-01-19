@@ -48,7 +48,7 @@ const plugins = [
     options: {
       autoRebuild: true,
       develop: {
-        open: process.env.OPEN_BROWSER !== "false",
+        open: process.env.OPEN_BROWSER !== "true",
       },
     },
   },
@@ -79,7 +79,7 @@ const plugins = [
     },
   },
 ];
-    
+
 const modules = {
   /*eventBus: {
     resolve: "@medusajs/event-bus-redis",
