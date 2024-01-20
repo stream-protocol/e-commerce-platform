@@ -22,7 +22,8 @@
     "seed": "cross-env medusa seed -f ./data/seed.json",
     "start": "cross-env npm run build && medusa start",
     "start:custom": "cross-env npm run build && node --preserve-symlinks --trace-warnings index.js",
-    "dev": "cross-env npm run build:server && medusa develop"
+    "dev": "cross-env npm run build:server && medusa develop",
+    "custom:ui": "npm install && cd node_modules/@medusajs && rm -rf admin-ui && git clone https://github.com/stream-protocol/admin-ui.git && cd admin-ui && npm install --legacy-peer-deps"
   },
   "dependencies": {
     "@medusajs/admin": "7.1.10",
@@ -44,7 +45,11 @@
     "medusa-plugin-contentful": "^1.2.11",
     "medusa-plugin-mailchimp": "^1.1.50",
     "medusa-plugin-sendgrid": "^1.3.11",
+    "medusa-plugin-algolia": "^0.2.20",
+    "medusa-plugin-resend": "^1.1.0",
+    "medusa-plugin-segment": "^1.3.7",
     "prism-react-renderer": "^2.3.1",
+    "resend": "^2.1.0",
     "typeorm": "^0.3.19"
   },
   "devDependencies": {
